@@ -1,0 +1,147 @@
+{% load static %}
+<style>
+
+.left{
+display:flex;    
+background-color:green;
+width:15%;
+height:auto;
+}
+.main{
+    display:flex;
+    flex-direction: column;
+    background-color:white;
+    border: 2px solid #3097D1;
+    padding:1%;
+    width:70%;
+    font-size:1.2em;
+    height:auto;
+}
+.right{
+    display:flex;
+    background-color:red;
+    width:15%;
+    height:auto;
+}
+.r{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    
+}
+.r2{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+.r3{
+    display:flex;
+    flex-direction:row;
+    padding:1%;
+}
+.order{
+    width:480px;
+    margin:2%;
+    padding:1%;
+    display:flex;
+    flex-direction:row;
+    border-radius:5%;
+    border: 1px solid #3097D1;
+
+}
+#placeorder{
+    margin-left:3%;
+
+}
+.remove{
+    margin:2%;
+}
+.extras{
+    margin:5%;
+}
+.c{
+    display:flex;
+    flex-direction:column;
+    margin-left:1%;
+    width:100%;
+}
+.c2{
+    display:flex;
+    flex-direction:column;
+    margin-right:15%;
+
+}
+.half{
+    display:flex;
+    width:50%
+}
+.title{
+  color:rgb(28, 28, 133);
+  font-weight: bold;
+
+}
+
+.element{
+    width:50%;
+    margin-left:25%;
+    border-radius:5%;
+    border: 1px solid #3097D1;
+    padding:1%;
+}
+
+.checkbox-1x {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+}
+.checkbox-2x {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+}
+.footer{
+  position:fixed;
+     }
+</style>
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'pizza/styles.css' %}"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
+    <body>
+            <b><nav class="navbar navbar-expand-sm bg navbar-light border border-primary" style="background-color:rgb(233, 214, 161);">
+                    <div class="container-fluid">
+                    <a href="{% url 'index' %}" class="navbar-brand" >
+                            <img src="{% static 'img/pizza-logo.png' %}" width="110" >
+                          </a>
+                       {% block navbar %}
+                       {% endblock %}
+                    </div>
+                  </nav></b>
+                
+        <div class="row">          
+        <div class="left"></div>
+        <div class="main">         
+        {% block body %}
+        {% endblock %}
+        </div>
+        <div class="right"></div>
+        </div>
+                       <!-- Footer -->
+<footer class="page-footer font-small blue" style="margin-top:5%">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">  "Project 3"/"CS50:Web Programming with Python and JavaScript"
+
+
+          <a href="https://mdbootstrap.com/education/bootstrap/">2019 @ Roman Mayerson</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+    </body>
+</html>

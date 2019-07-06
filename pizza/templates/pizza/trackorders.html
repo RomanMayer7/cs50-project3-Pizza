@@ -1,0 +1,74 @@
+{% extends "pizza/base.html" %}
+
+{% block title %}
+    Track Your Orders
+{% endblock %}
+
+{% block navbar %}
+{% if user.is_superuser %}
+<ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link"  href="{% url 'orders' %}"><i class="fas fa-shopping-cart"></i>Shopping Cart</a>
+        </li>
+        <li class="nav-item active">
+                <a class="nav-link"  href="{% url 'trackorders' %}"><i class="fas fa-truck-moving"></i>Track Orders</a>
+            </li>
+            <li class="nav-item">
+               <a  href="{% url 'manageorders' %}" class="nav-link" ><i class="fas fa-tasks"></i>Manage Orders</a>
+            </li>
+        <li class="nav-item">
+          <a  href="{% url 'logout' %}" class="nav-link" ><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </li>
+      </ul> 
+      {% else %}
+      <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link"  href="{% url 'orders' %}"><i class="fas fa-shopping-cart"></i>Shopping Cart</a>
+            </li>
+            <li class="nav-item active">
+                    <a class="nav-link"  href="{% url 'trackorders' %}"><i class="fas fa-truck-moving"></i>Track Orders</a>
+                </li>
+            <li class="nav-item">
+              <a  href="{% url 'logout' %}" class="nav-link" ><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </li>
+          </ul> 
+     {% endif %}        
+{% endblock %}
+
+
+{% block body %}
+
+<h1>{{orders_owner}}|Track Your Orders</h1>
+{% if order_total == 0 %}
+ <hr> <hr>
+ <h2>There is no Orders to Track</h2>
+ {% else %}
+<div class="r2">
+    {% for order,extra in my_list  %}
+ <div class="order">
+     <div>
+    <div class="r2">Order:#<div class="order_number">{{ order.id }}</div></div>
+    <hr>
+    <div><h4>{{ order.name }}</h4></div>
+    <div>Size:{{ order.size }}</div>
+    <div class="pricefield"> {{ order.price }}$</div>
+    <button class="btn btn-warning">{{ order.status }}</button>
+     </div>
+    <div class="extras">
+        <br>
+        <h6>
+         {% for ex in extra %}
+         <li>{{ ex }}</li>
+         {% empty %}
+         <div></div>
+         {% endfor %}
+         </h6>
+    </div>
+   </div>
+     {% endfor %}
+     </div>
+    <br>
+        <!--Total price of all orders for a user-->
+        <b><div class="r2">Total:<div id="total">{{order_total}}</div></div></b>
+ {% endif %}    
+{% endblock %}

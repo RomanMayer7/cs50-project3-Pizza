@@ -1,0 +1,36 @@
+{% extends "pizza/base.html" %}
+
+{% block body %}
+<h1>Login</h1>
+{% if message %}
+    <div>
+        {{ message }}
+    </div>
+{% endif %}
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input name="username" type="text"/>
+    <input name="password" type="password"/>
+    <input type="submit" value="Login"/>
+</form>
+
+  <h2>Sign up</h2>
+  <form action ="{% url 'signup' %}"method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+
+{% endblock %}
+
