@@ -15,7 +15,7 @@ Project Description
 ----------------------------------------------------------------------------------------
 
 This "Restaurant Management System" is designed for Clients and Restaraunt Managers
-It enables clients to make orders,based on Restaraunt Menu.After they Place their Order:they can Track order's status.
+It enables the clients to make orders,based on Restaraunt Menu.After they Place their Order:they can Track order's status.
 Each client have Shopping Cart to place multiple orders.The Order can be removed from Shopping Cart if client changes his Mind later.
 The new clients must create account in order to see  the Menu and make orders
 The returning clients must pass authentication to log in.
@@ -38,7 +38,7 @@ In [mysite] subfolder there are:
 'settings.py' ,'urls'.py '_init_.py','wsgi.py'
 responsibal gor all global project level related info
 
-*In 'urls'.py there  are routs for application level local
+*In 'urls'.py there  are routes for application level local
 urls :path('',include('pizza.urls'))
 as  well  for  admin maagement site:
 path('admin/', admin.site.urls)
@@ -63,11 +63,11 @@ INSTALLED_APPS = [
 *'models.py' contains all models for data types ,used in our  Restoraunt Data Model :"Orders", food types:"Pizzas","Subs" etc...
 
 *'views.py' contains all application  BackEnd logic written in Python
-'Views' or Functions for all different routs the user can take when using the App
+'Views' or Functions for all different routes the user can take when using the App
 It prepares all the  nescessary data to represent it  inside different HTML Templates
 when user chooses his route.
 
-*'urls.py' listss all possible routs presented in Application with references to all appropriate views for each of them
+*'urls.py' listss all possible routes presented in Application with references to all appropriate views for each of them
 
 *'admin.py' contains all registrations for different DB models  reserved for Admin Management Site
 
